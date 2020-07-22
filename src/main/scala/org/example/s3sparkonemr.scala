@@ -1,35 +1,19 @@
 package org.example
 
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.types._
-import com.typesafe.config.{Config, ConfigFactory}
 import java.io.File
 
-object s3sparkdemo {
+//import com.typesafe.config.ConfigFactory
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
+
+object s3sparkonemr {
   def main(args: Array[String]): Unit = {
 
     //create spark session
     val spark = SparkSession.builder
-      .master("local[*]")
+      //.master("local[*]")
       .appName("invalidCustomer")
       .getOrCreate()
-    //get aws access id and secret from conf file
-    val config = ConfigFactory.parseFile(new File(args(0).toString()))
-      .getConfig("src.app.conf")
-    //get aws configs
-    val awsConfig = config.getConfig("aws")
-    //get aws access key and secret key
-    val s3_access_key = awsConfig.getString("access_key")
-    val s3_secret_key = awsConfig.getString("secret_key")
-    // Replace Key with your AWS account key (You can find this on IAM
-    spark.sparkContext
-      .hadoopConfiguration.set("fs.s3a.access.key", s3_access_key)
-    // Replace Key with your AWS secret key (You can find this on IAM
-    spark.sparkContext
-      .hadoopConfiguration.set("fs.s3a.secret.key",s3_secret_key)
-    //set endpoint to look for s3 file system
-    spark.sparkContext
-      .hadoopConfiguration.set("fs.s3a.endpoint", "s3.amazonaws.com")
 
     val orderschema = StructType(Array(
       StructField("order_id",IntegerType, true),
@@ -64,6 +48,5 @@ object s3sparkdemo {
     //invalidCustDF.write.save("s3a://paresh-first-aws-s3-bucket/output/s3sparkdemo")
     invalidCustDF.show()
   }
-
 
 }

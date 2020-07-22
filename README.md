@@ -3,7 +3,7 @@ Also, this project has sample code, docker files and scripts to run spark master
 
 After building the project, jar would go to target folder.
 
-####Contents
+#### Contents
 
 1. [Spark Join Demo](https://github.com/BParesh89/spark-playground/blob/master/src/main/scala/org/example/sparkdemo.scala)
 
@@ -15,6 +15,7 @@ After building the project, jar would go to target folder.
 
 
 ##### Reference
+
 1. [http://knowdimension.com/en/data/create-a-spark-application-with-scala-using-maven-on-intellij/](http://knowdimension.com/en/data/create-a-spark-application-with-scala-using-maven-on-intellij/)
 
 2. [https://www.pavanpkulkarni.com/blog/13-spark-on-docker/](https://www.pavanpkulkarni.com/blog/13-spark-on-docker/)
