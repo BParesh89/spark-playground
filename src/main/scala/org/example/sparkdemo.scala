@@ -12,7 +12,7 @@ object sparkdemo {
     val logger = LogManager.getLogger(getClass.getName)
     //create spark session
     val spark = SparkSession.builder
-      .master("local[*]")
+      //.master("local[*]")
       .appName("invalidcustomer")
       .getOrCreate()
     logger.info("Spark Session created!")
